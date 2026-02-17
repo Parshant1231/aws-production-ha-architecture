@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS CloudOps | Production Environment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark shadow-sm py-3">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">
+                <i class="bi bi-cloud-check-fill me-2"></i>CLOUDOPS DASHBOARD
+            </span>
+            <span class="badge rounded-pill bg-success p-2 px-3">
+                <span class="status-dot"></span> System Operational
+            </span>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="fw-bold">High Availability Cluster <small class="text-muted fw-light fs-5">| Nginx Fleet</small></h2>
+                <p class="text-secondary">Managed by Auto Scaling Group across 3 Availability Zones</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title text-primary m-0">Active Instance Metadata</h5>
+                            <span class="badge bg-light text-dark border">ALB Targeted</span>
+                        </div>
+                        <p class="card-text text-muted small">Real-time data served via Application Load Balancer</p>
+                        
+                        <div class="terminal-window shadow-inner">
+                            <div class="mb-2"><code>$ get-instance-info --active</code></div>
+                            <code>INSTANCE_ID: <span id="instance-id" class="text-info">i-04f76...</span></code><br>
+                            <code>REGION_AZ: <span id="az" class="text-warning">us-east-1a</span></code><br>
+                            <code>PRIVATE_IP: <span class="text-success">10.0.1.44</span></code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title mb-3">Resource Status</h5>
+                            <div class="d-flex align-items-center p-3 mb-3 bg-light rounded border-start border-4 border-info">
+                                <div class="ms-2">
+                                    <div class="fw-bold text-info">S3 Bucket Sync</div>
+                                    <div class="small">Static assets loaded successfully</div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-center p-3 mb-4 bg-light rounded border-start border-4 border-success">
+                                <div class="ms-2">
+                                    <div class="fw-bold text-success">Health Check</div>
+                                    <div class="small">2/2 checks passed (Healthy)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-aws w-100 py-2 shadow-sm" onclick="checkHealth()">
+                            Refresh Load Balancer Status
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

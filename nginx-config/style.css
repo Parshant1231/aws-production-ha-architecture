@@ -1,0 +1,88 @@
+:root {
+    --aws-orange: #ff9900;
+    --dark-bg: #232f3e;
+    --status-green: #2ecc71;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: var(--dark-bg) !important;
+    border-bottom: 3px solid var(--aws-orange);
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: white !important;
+}
+
+/* Card Improvements */
+.card {
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* Status Indicator */
+.status-dot {
+    height: 12px;
+    width: 12px;
+    background-color: var(--status-green);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0 0 8px var(--status-green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* Terminal-style code blocks */
+.terminal-window {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    position: relative;
+}
+
+.terminal-window::before {
+    content: "● ● ●";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 10px;
+    color: #555;
+}
+
+code {
+    color: #a9ffaf;
+}
+
+.btn-aws {
+    background-color: var(--aws-orange);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-aws:hover {
+    background-color: #e68a00;
+    color: white;
+}
